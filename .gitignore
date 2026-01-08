@@ -19,6 +19,55 @@
 *.tar.gz
 *.rar
 
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE
+### IntelliJ IDEA ###
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Spring Boot
+/logs/
+!/logs/.gitkeep
+*.log
+!*.example.log
+
+# Spring specific
+application-local.properties
+application-dev.properties
+application-prod.properties
+*.db
+*.db-shm
+*.db-wal
+
+# Docker
+docker-compose.yml.version
+.env
+
+# Temp files
+*.tmp
+*.temp
+
+# Env files 
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
