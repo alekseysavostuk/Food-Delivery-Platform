@@ -179,4 +179,4 @@ For support, email savostukaleksei@gmail.com or open an issue in the GitHub repo
 
 ⭐ Star us on GitHub if you find this project useful!
 
-## 🍽️ Happy ordering with FoodFlow!
+## 🍽️ Happy ordering!
