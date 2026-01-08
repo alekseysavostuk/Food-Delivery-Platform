@@ -1,0 +1,37 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate docker-compose
+        run: docker-compose config
+
+      - name: Check required files
+        run: |
+          echo "Checking project structure..."
+          [ -f "docker-compose.yml" ] || (echo "Missing docker-compose.yml" && exit 1)
+          [ -f ".env.example" ] || (echo "Missing .env.example" && exit 1)
+          [ -d "delivery-ui" ] || (echo "Missing frontend directory" && exit 1)
+          [ -d "foodDeliveryPlatformUser" ] || (echo "Missing User service" && exit 1)
+          [ -d "foodDeliveryPlatformRestaurant" ] || (echo "Missing Restaurant service" && exit 1)
+          [ -d "foodDeliveryPlatformOrder" ] || (echo "Missing Order service" && exit 1)
+          echo "All files present"
+
+      - name: Check environment variables
+        run: |
+          echo "Checking .env.example..."
+          grep -q "POSTGRES_USERNAME" .env.example || echo "Missing POSTGRES_USERNAME"
+          grep -q "JWT_SECRET" .env.example || echo "Missing JWT_SECRET"
+          grep -q "MINIO_ACCESS_KEY" .env.example || echo "Missing MINIO_ACCESS_KEY"
+          echo "Environment check completed"
